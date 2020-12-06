@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lekagul Preserve data visualization</title>
+    <link rel="stylesheet" href="styles/index.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Spatial graph and Flowmap -->
+    <link rel="stylesheet" href="styles/flowGraph.css" />
+    <link rel="stylesheet" href="styles/spatialGraph.css" />
+    <script src="scripts/main_maps.js"></script>
+
+    <!-- Barchart -->
+    <link rel="stylesheet" href="styles/barChart.css" />
+    <script src="scripts/barChart.js"></script>
+
+    <!-- Clock chart -->
+    <link rel="stylesheet" href="styles/clock.css" />
+    <script src="scripts/clock.js"></script>
+
+    <!-- Bubble chart and clock -->
+    <script src="scripts/bubbleScript.js"></script>
+
+    <!-- Integration scripts -->
+    <script src="scripts/index.js"></script>
+  </head>
+  <body>
+    <div class="body-container">
+      <h1 class="card-title">VAST Challenge 2017 MC1</h1>
+      <div class="filter-div">
+        <div style="padding: 10px">
+          <label for="yearFilter">Year</label>
+          <select
+            name="yearFilter"
+            id="yearFilter"
+            onchange="yearFilter(value)"
+          >
+            <option value="All" selected="selected">All</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+          </select>
+        </div>
+        <div style="padding: 10px">
+          <label for="monthFilter">Month</label>
+          <select
+            name="monthFilter"
+            id="monthFilter"
+            onchange="monthFilter(value)"
+          >
+            <option value="All" selected="selected">All</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+        <div style="padding: 10px">
+          <label for="gateFilter">Gate Type</label>
+          <select
+            name="gateFilter"
+            id="gateFilter"
+            onchange="gateFilter(value)"
+          >
+            <option value="All" selected="selected">All</option>
+            <option value="entrance">Entrance</option>
+            <option value="general-gate">General Gate</option>
+            <option value="ranger-stop">Ranger Stop</option>
+            <option value="camping">Camping</option>
+            <option value="ranger-base">Ranger Base</option>
+            <option value="gate">Gate</option>
+          </select>
+        </div>
+        <div style="padding: 10px">
+          <label for="carTypeFilter">Car Type</label>
+          <select
+            name="carTypeFilter"
+            id="carTypeFilter"
+            onchange="carTypeFilter(value)"
+          >
+            <option value="All" selected="selected">All</option>
+            <option value="1">2 axle car</option>
+            <option value="2">2 axle truck</option>
+            <option value="3">3 axle truck</option>
+            <option value="4">4+ axle truck</option>
+            <option value="5">2 axle bus</option>
+            <option value="6">3 axle bus</option>
+            <option value="2P">Preserve vehicle</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-container">
+        <div class="card" style="padding: 10px; display: flex">
+          <div style="padding: 10px">
+            <h1 id="spatial-map-title" class="card-title">Gate-Vehicle Density</h1>
+            <svg class="spatialMap"></svg>
+          </div>
+          <div style="padding: 10px">
+            <div style="text-align: center">
+              <svg id="legend" height="600" width="250"></svg>
+            </div>
+          </div>
+          <div style="padding: 10px">
+            <h1 id="flow-map-title" class="card-title">Gate-Vehicle Flow</h1>
+            <svg class="flowmap"></svg>
+          </div>
+        </div>
+      </div>
+      <div class="grid-container" style="grid-template-columns: 1fr">
+        <div class="card">
+          <svg id="barChart"></svg>
+        </div>
+      </div>
+      <div class="grid-container">
+        <div class="card" style="display: flex">
+          <div style="border: 1px solid #bababa; margin: 20px">
+            <div>
+              <h1 class="card-title">Weekly Vehicle Count</h1>
+              <svg id="bubbleChart"></svg>
+            </div>
+            <div style="text-align: center">
+              <svg id="legendForBubble" height="100" width="450"></svg>
+            </div>
+          </div>
+          <div style="border: 1px solid #bababa; margin: 20px">
+            <h1 id = "hrly-vhl-cnt" class="card-title">Hourly Vehicle Count</h1>
+            <div style="display: flex">
+              <svg id="clock_1" class="clockSVG"></svg>
+              <svg id="clock_2" class="clockSVG"></svg>
+            </div>
+            <div style="text-align: center">
+              <svg id="legendForClock" height="100" width="600"></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

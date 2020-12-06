@@ -1,0 +1,17 @@
+.bar {
+  fill: #663399;
+  /* stroke: #00008b; */
+}
+
+#barChart {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.tick line{
+  stroke: #C0C0BB;
+}
+
+.tick text{
+  fill:gray;
+}
